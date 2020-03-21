@@ -27,10 +27,16 @@
           let t = eval(x+s)
           document.getElementById("si").value = s
           document.getElementById("ta").value = t
-          let cia = eval(x* Math.pow((1 + y*12/100), did/365))
-          let ci = eval(cia-x)
-          document.getElementById("tcb").value = ci
-          document.getElementById("tca").value = cia
+          if(did>365){
+              let cia = eval(x* Math.pow((1 + y*12/100), did/365))
+              let ci = eval(cia-x)
+              document.getElementById("tcb").value = ci
+              document.getElementById("tca").value = cia
+          }
+          else{
+              document.getElementById("tcb").value = "NA"
+              document.getElementById("tca").value = "NA"
+          }
         }
          
       </script> 
