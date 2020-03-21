@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Interest Calculator</title>
+    <link rel="stylesheet" type="text/css" href="cal.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <script>
+
+        function cal() {
+          // body...
+
+          // To set two dates to two variables 
+          var date1 = new Date(document.getElementById("start").value); 
+          var date2 = new Date(document.getElementById("end").value); 
+            
+          // To calculate the time difference of two dates 
+          var Difference_In_Time = date2.getTime() - date1.getTime(); 
+            
+          // To calculate the no. of days between two dates 
+          var did = Difference_In_Time / (1000 * 3600 * 24);
+
+          let x = +document.getElementById("amt").value
+          let y = +document.getElementById("ir").value
+          let s = eval(x*y*did/(100*30))
+          let t = eval(x+s)
+          document.getElementById("si").value = s
+          document.getElementById("ta").value = t
+          let cia = eval(x* Math.pow((1 + y*12/100), did/365))
+          let ci = eval(cia-x)
+          document.getElementById("tcb").value = ci
+          document.getElementById("tca").value = cia
+        }
+         
+      </script> 
+
+  </head>
+  <body>
+
+    <div class="container" align="center">
+      <div class="jumbotron">
+
+        <h1>Interest Calculator</h1>
+
+        <h2>This calculator was built by N.B.Patil</h2>
+
+        <br>
+        <form class="form-horizontal" method="post" action="">
+          
+          <div class="form-group form-inline">
+          
+            <label for="amt" class="col-sm-4 control-label">Amount:</label>
+            
+            <div class="input-group">
+              <div class="input-group-addon">₹</div>
+                <input type="number" class="form-control col-sm-3" id="amt" placeholder="Amount">
+              <div class="input-group-addon">.00</div>
+            </div>
+          </div>
+
+          <div class="form-group form-inline">
+          
+            <label for="ir" class="col-sm-4 control-label">Interest Rate:</label>
+            
+            <div class="input-group">
+              <div class="input-group-addon">IR</div>
+                <input type="number" class="form-control col-sm-3" id="ir" placeholder="IR per Month">
+              <div class="input-group-addon">%</div>
+            </div>
+          </div>
+
+          <div class="form-group form-inline">
+          
+            <label for="start" class="col-sm-4 control-label">Start Date:</label>
+            
+            <div class="input-group">
+              <div class="input-group-addon">&#x1F4C5;</div>
+                <input type="date" class="form-control col-sm-3" id="start">
+              <div class="input-group-addon">&#x1F4C6;</div>
+            </div>
+          </div>
+
+          <div class="form-group form-inline">
+          
+            <label for="end" class="col-sm-4 control-label">End Date:</label>
+            
+            <div class="input-group">
+              <div class="input-group-addon">&#x1F4C5;</div>
+                <input type="date" class="form-control col-sm-3" id="end">
+              <div class="input-group-addon">&#x1F4C6;</div>
+            </div>
+          </div>
+
+
+          <div class="form-group" align="center">
+            <div class="col-sm-12">
+              <input id="clr" data-toggle="button" aria-pressed="false" autocomplete="off" class="btn btn-primary" type="reset" value="Reset">
+              <input data-toggle="button" aria-pressed="false" autocomplete="off" onclick="cal()" class="btn btn-primary" type="button" value="Calculate">
+            </div>
+          </div><br>
+
+          <div class="row justify-content-around">
+            <div class="col-sm-6">
+              <h3>Simple Interest</h3>
+
+              <div class="form-group form-inline">
+              
+                <label for="si" class="col-sm-5 control-label">Interest Amount:</label>
+                
+                <div>
+                  
+                  <input disabled="true" type="text" class="form-control col-sm-4" id="si">
+                  
+                </div>
+              </div>
+
+              <div class="form-group form-inline">
+              
+                <label for="ta" class="col-sm-5 control-label">Total Amount:</label>
+                
+                <div>
+                  
+                  <input disabled="true" type="text" class="form-control col-sm-4" id="ta">
+                  
+                </div>
+              </div>
+            </div>
+            
+
+            <div class="col-sm-6">
+              <h3>Compound Interest</h3>
+
+              <div class="form-group form-inline">
+              
+                <label for="tcb" class="col-sm-5 control-label">Interest Amount:</label>
+                
+                <div>
+                  
+                  <input disabled="true" type="text" class="form-control col-sm-4" id="tcb">
+                  
+                </div>
+              </div>
+
+              <div class="form-group form-inline">
+              
+                <label for="tca" class="col-sm-5 control-label">Total amount:</label>
+                
+                <div>
+                  
+                  <input disabled="true" type="text" class="form-control col-sm-4" id="tca">
+                  
+                </div>
+              </div>
+            </div>
+          
+          </div>
+
+        </form>
+        
+
+      </div>
+
+    </div>
+
+  	<script
+    	src="http://code.jquery.com/jquery-3.4.1.js"
+    	integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    	crossorigin="anonymous"></script>
+
+  </body>
+</html>
